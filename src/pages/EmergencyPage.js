@@ -1,87 +1,88 @@
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Phone, AlertCircle, Heart, Shield, MessageCircle, Ambulance } from "lucide-react"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import React from 'react';
+import { Navigation } from '../components/Navigation';
+import { Footer } from '../components/Footer';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
+import { Button } from '../components/ui/Button';
+import { Alert, AlertDescription, AlertTitle } from '../components/ui/Alert';
+import { Phone, AlertCircle, Heart, Shield, MessageCircle, Ambulance } from 'lucide-react';
 
 const emergencyContacts = [
   {
     id: 1,
-    name: "911 - Emergency Services",
+    name: '911 - Emergency Services',
     icon: Ambulance,
-    phone: "911",
-    description: "For immediate life-threatening emergencies",
-    color: "text-destructive",
-    bgColor: "bg-destructive/10",
+    phone: '911',
+    description: 'For immediate life-threatening emergencies',
+    color: 'text-destructive',
+    bgColor: 'bg-destructive/10',
   },
   {
     id: 2,
-    name: "988 - Suicide & Crisis Lifeline",
+    name: '988 - Suicide & Crisis Lifeline',
     icon: MessageCircle,
-    phone: "988",
-    description: "24/7 free and confidential support for people in distress",
-    color: "text-primary",
-    bgColor: "bg-primary/10",
+    phone: '988',
+    description: '24/7 free and confidential support for people in distress',
+    color: 'text-primary',
+    bgColor: 'bg-primary/10',
   },
   {
     id: 3,
-    name: "Poison Control",
+    name: 'Poison Control',
     icon: AlertCircle,
-    phone: "1-800-222-1222",
-    description: "24/7 poison emergency hotline",
-    color: "text-warning",
-    bgColor: "bg-warning/10",
+    phone: '1-800-222-1222',
+    description: '24/7 poison emergency hotline',
+    color: 'text-warning',
+    bgColor: 'bg-warning/10',
   },
   {
     id: 4,
-    name: "Domestic Violence Hotline",
+    name: 'Domestic Violence Hotline',
     icon: Shield,
-    phone: "1-800-799-7233",
-    description: "National domestic violence hotline, available 24/7",
-    color: "text-accent",
-    bgColor: "bg-accent/10",
+    phone: '1-800-799-7233',
+    description: 'National domestic violence hotline, available 24/7',
+    color: 'text-accent',
+    bgColor: 'bg-accent/10',
   },
   {
     id: 5,
-    name: "Crisis Text Line",
+    name: 'Crisis Text Line',
     icon: MessageCircle,
-    phone: "Text HOME to 741741",
-    description: "Text-based crisis support available 24/7",
-    color: "text-primary",
-    bgColor: "bg-primary/10",
+    phone: 'Text HOME to 741741',
+    description: 'Text-based crisis support available 24/7',
+    color: 'text-primary',
+    bgColor: 'bg-primary/10',
   },
   {
     id: 6,
-    name: "Substance Abuse Hotline",
+    name: 'Substance Abuse Hotline',
     icon: Phone,
-    phone: "1-800-662-4357",
-    description: "SAMHSA National Helpline for substance abuse",
-    color: "text-accent",
-    bgColor: "bg-accent/10",
+    phone: '1-800-662-4357',
+    description: 'SAMHSA National Helpline for substance abuse',
+    color: 'text-accent',
+    bgColor: 'bg-accent/10',
   },
-]
+];
 
 const localEmergency = [
   {
-    name: "St. Francis Medical Center ER",
-    phone: "(318) 966-4000",
-    address: "309 Jackson St, Monroe, LA 71201",
-    hours: "24/7 Emergency Room",
+    name: 'St. Francis Medical Center ER',
+    phone: '(318) 966-4000',
+    address: '309 Jackson St, Monroe, LA 71201',
+    hours: '24/7 Emergency Room',
   },
   {
-    name: "LSU Health Monroe Emergency",
-    phone: "(318) 330-7000",
-    address: "4864 Jackson St, Monroe, LA 71202",
-    hours: "24/7 Emergency Room",
+    name: 'LSU Health Monroe Emergency',
+    phone: '(318) 330-7000',
+    address: '4864 Jackson St, Monroe, LA 71202',
+    hours: '24/7 Emergency Room',
   },
   {
-    name: "Monroe Police Department",
-    phone: "(318) 329-2600",
-    address: "2604 Renwick St, Monroe, LA 71201",
-    hours: "Non-emergency line",
+    name: 'Monroe Police Department',
+    phone: '(318) 329-2600',
+    address: '2604 Renwick St, Monroe, LA 71201',
+    hours: 'Non-emergency line',
   },
-]
+];
 
 export default function EmergencyPage() {
   return (
@@ -121,7 +122,7 @@ export default function EmergencyPage() {
             <h2 className="text-2xl font-bold mb-6">National Hotlines</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {emergencyContacts.map((contact) => {
-                const Icon = contact.icon
+                const Icon = contact.icon;
                 return (
                   <Card key={contact.id} className="hover:shadow-lg transition-shadow">
                     <CardHeader>
@@ -139,19 +140,26 @@ export default function EmergencyPage() {
                     </CardHeader>
                     <CardContent>
                       <Button
-                        asChild
+                        asChild={contact.phone.startsWith('1-')}
                         className="w-full"
                         size="lg"
-                        variant={contact.id === 1 ? "destructive" : "default"}
+                        variant={contact.id === 1 ? 'destructive' : 'default'}
                       >
-                        <a href={contact.phone.startsWith("1-") ? `tel:${contact.phone}` : undefined}>
-                          <Phone className="mr-2 h-5 w-5" />
-                          {contact.phone}
-                        </a>
+                        {contact.phone.startsWith('1-') ? (
+                          <a href={`tel:${contact.phone}`}>
+                            <Phone className="mr-2 h-5 w-5" />
+                            {contact.phone}
+                          </a>
+                        ) : (
+                          <>
+                            <Phone className="mr-2 h-5 w-5" />
+                            {contact.phone}
+                          </>
+                        )}
                       </Button>
                     </CardContent>
                   </Card>
-                )
+                );
               })}
             </div>
           </div>
@@ -230,5 +238,5 @@ export default function EmergencyPage() {
 
       <Footer />
     </div>
-  )
+  );
 }

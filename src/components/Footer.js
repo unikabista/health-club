@@ -1,4 +1,5 @@
-import { Heart, Phone, MapPin } from "lucide-react"
+import React from 'react';
+import { Heart, Phone, MapPin } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -68,5 +69,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

@@ -1,9 +1,10 @@
-import Link from "next/link"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Heart, Phone, Building2, Activity, ArrowRight, Shield, Users, Clock } from "lucide-react"
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Navigation } from '../components/Navigation';
+import { Footer } from '../components/Footer';
+import { Button } from '../components/ui/Button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
+import { Heart, Phone, Building2, Activity, ArrowRight, Shield, Users, Clock } from 'lucide-react';
 
 export default function HomePage() {
   return (
@@ -26,13 +27,13 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="text-base">
-                <Link href="/clinics">
+                <Link to="/clinics">
                   Find Local Clinics
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-base bg-transparent">
-                <Link href="/emergency">
+                <Link to="/emergency">
                   Emergency Contacts
                   <Phone className="ml-2 h-5 w-5" />
                 </Link>
@@ -84,7 +85,7 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <Button asChild variant="link" className="p-0">
-                    <Link href="/clinics">
+                    <Link to="/clinics">
                       Browse Clinics
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </Link>
@@ -100,7 +101,7 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <Button asChild variant="link" className="p-0">
-                    <Link href="/emergency">
+                    <Link to="/emergency">
                       Get Emergency Info
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </Link>
@@ -116,7 +117,7 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <Button asChild variant="link" className="p-0">
-                    <Link href="/wellness">
+                    <Link to="/wellness">
                       Explore Wellness
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </Link>
@@ -160,10 +161,10 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" variant="default">
-                <Link href="/clinics">Find a Clinic</Link>
+                <Link to="/clinics">Find a Clinic</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/wellness">Wellness Tips</Link>
+                <Link to="/wellness">Wellness Tips</Link>
               </Button>
             </div>
           </div>
@@ -172,5 +173,5 @@ export default function HomePage() {
 
       <Footer />
     </div>
-  )
+  );
 }

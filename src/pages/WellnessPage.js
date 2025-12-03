@@ -1,108 +1,107 @@
-"use client"
-
-import { useState } from "react"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Activity, Brain, Heart, Apple, Users, Sun, ChevronDown, ChevronUp } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Navigation } from '../components/Navigation';
+import { Footer } from '../components/Footer';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
+import { Activity, Brain, Heart, Apple, Users, Sun, ChevronDown, ChevronUp } from 'lucide-react';
+import { Button } from '../components/ui/Button';
 
 const wellnessCategories = [
   {
     id: 1,
-    title: "Mental Health & Stress Management",
+    title: 'Mental Health & Stress Management',
     icon: Brain,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
+    color: 'text-primary',
+    bgColor: 'bg-primary/10',
     tips: [
-      "Practice deep breathing: Inhale for 4 counts, hold for 4, exhale for 4",
-      "Take regular breaks during work or study sessions",
-      "Connect with friends and family regularly",
-      "Try mindfulness meditation for 5-10 minutes daily",
-      "Maintain a consistent sleep schedule",
-      "Limit caffeine and screen time before bed",
-      "Keep a gratitude journal to focus on positive aspects",
-      "Seek professional help when feeling overwhelmed",
+      'Practice deep breathing: Inhale for 4 counts, hold for 4, exhale for 4',
+      'Take regular breaks during work or study sessions',
+      'Connect with friends and family regularly',
+      'Try mindfulness meditation for 5-10 minutes daily',
+      'Maintain a consistent sleep schedule',
+      'Limit caffeine and screen time before bed',
+      'Keep a gratitude journal to focus on positive aspects',
+      'Seek professional help when feeling overwhelmed',
     ],
   },
   {
     id: 2,
-    title: "Nutrition & Healthy Eating",
+    title: 'Nutrition & Healthy Eating',
     icon: Apple,
-    color: "text-success",
-    bgColor: "bg-success/10",
+    color: 'text-success',
+    bgColor: 'bg-success/10',
     tips: [
-      "Eat a variety of colorful fruits and vegetables",
-      "Choose whole grains over refined grains",
-      "Stay hydrated - aim for 8 glasses of water daily",
-      "Limit processed foods and added sugars",
-      "Include lean proteins in your meals",
-      "Practice portion control",
-      "Plan meals ahead to make healthier choices",
-      "Read nutrition labels to make informed decisions",
+      'Eat a variety of colorful fruits and vegetables',
+      'Choose whole grains over refined grains',
+      'Stay hydrated - aim for 8 glasses of water daily',
+      'Limit processed foods and added sugars',
+      'Include lean proteins in your meals',
+      'Practice portion control',
+      'Plan meals ahead to make healthier choices',
+      'Read nutrition labels to make informed decisions',
     ],
   },
   {
     id: 3,
-    title: "Physical Activity & Exercise",
+    title: 'Physical Activity & Exercise',
     icon: Activity,
-    color: "text-accent",
-    bgColor: "bg-accent/10",
+    color: 'text-accent',
+    bgColor: 'bg-accent/10',
     tips: [
-      "Aim for 150 minutes of moderate activity per week",
-      "Take short walks during breaks",
-      "Try activities you enjoy to stay motivated",
-      "Stretch before and after exercise",
-      "Start small and gradually increase intensity",
-      "Find a workout buddy for accountability",
-      "Mix cardio with strength training",
-      "Use stairs instead of elevators when possible",
+      'Aim for 150 minutes of moderate activity per week',
+      'Take short walks during breaks',
+      'Try activities you enjoy to stay motivated',
+      'Stretch before and after exercise',
+      'Start small and gradually increase intensity',
+      'Find a workout buddy for accountability',
+      'Mix cardio with strength training',
+      'Use stairs instead of elevators when possible',
     ],
   },
   {
     id: 4,
-    title: "Sleep & Rest",
+    title: 'Sleep & Rest',
     icon: Sun,
-    color: "text-warning",
-    bgColor: "bg-warning/10",
+    color: 'text-warning',
+    bgColor: 'bg-warning/10',
     tips: [
-      "Aim for 7-9 hours of sleep per night",
-      "Create a relaxing bedtime routine",
-      "Keep your bedroom cool, dark, and quiet",
-      "Avoid screens 1 hour before bed",
-      "Limit caffeine after 2 PM",
-      "Exercise regularly but not close to bedtime",
-      "Address sleep problems with a healthcare provider",
-      "Take short power naps if needed (20-30 minutes)",
+      'Aim for 7-9 hours of sleep per night',
+      'Create a relaxing bedtime routine',
+      'Keep your bedroom cool, dark, and quiet',
+      'Avoid screens 1 hour before bed',
+      'Limit caffeine after 2 PM',
+      'Exercise regularly but not close to bedtime',
+      'Address sleep problems with a healthcare provider',
+      'Take short power naps if needed (20-30 minutes)',
     ],
   },
-]
+];
 
 const localResources = [
   {
-    name: "Monroe Recreation Department",
-    description: "Free fitness classes and community wellness programs",
-    contact: "(318) 329-2190",
+    name: 'Monroe Recreation Department',
+    description: 'Free fitness classes and community wellness programs',
+    contact: '(318) 329-2190',
   },
   {
-    name: "Ouachita Parish Library",
-    description: "Health and wellness workshops, free resources",
-    contact: "(318) 327-1490",
+    name: 'Ouachita Parish Library',
+    description: 'Health and wellness workshops, free resources',
+    contact: '(318) 327-1490',
   },
   {
-    name: "Monroe Farmers Market",
-    description: "Fresh local produce, Saturdays 8 AM - 12 PM",
-    contact: "Downtown Monroe",
+    name: 'Monroe Farmers Market',
+    description: 'Fresh local produce, Saturdays 8 AM - 12 PM',
+    contact: 'Downtown Monroe',
   },
   {
-    name: "Community Fitness Centers",
-    description: "Affordable gym memberships and group classes",
-    contact: "Various locations",
+    name: 'Community Fitness Centers',
+    description: 'Affordable gym memberships and group classes',
+    contact: 'Various locations',
   },
-]
+];
 
-function FAQItem({ question, answer }: { question: string; answer: string }) {
-  const [isOpen, setIsOpen] = useState(false)
+function FAQItem({ question, answer }) {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Card className="cursor-pointer hover:shadow-md transition-shadow" onClick={() => setIsOpen(!isOpen)}>
@@ -122,7 +121,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         </CardContent>
       )}
     </Card>
-  )
+  );
 }
 
 export default function WellnessPage() {
@@ -148,7 +147,7 @@ export default function WellnessPage() {
         <section className="py-12 px-4 sm:px-6 lg:px-8">
           <div className="container mx-auto max-w-6xl space-y-8">
             {wellnessCategories.map((category) => {
-              const Icon = category.icon
+              const Icon = category.icon;
               return (
                 <Card key={category.id} className="overflow-hidden">
                   <CardHeader className={`${category.bgColor}`}>
@@ -170,7 +169,7 @@ export default function WellnessPage() {
                     </ul>
                   </CardContent>
                 </Card>
-              )
+              );
             })}
           </div>
         </section>
@@ -233,10 +232,10 @@ export default function WellnessPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
-                <a href="/clinics">Find a Healthcare Provider</a>
+                <Link to="/clinics">Find a Healthcare Provider</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <a href="/emergency">Emergency Contacts</a>
+                <Link to="/emergency">Emergency Contacts</Link>
               </Button>
             </div>
           </div>
@@ -245,5 +244,5 @@ export default function WellnessPage() {
 
       <Footer />
     </div>
-  )
+  );
 }
