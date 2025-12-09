@@ -2,11 +2,14 @@
   "name": "monroe-health-hub",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://unikabista.github.io/health-club",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "lucide-react": "^0.454.0",
@@ -36,5 +39,16 @@
     "@tailwindcss/postcss": "^4.1.17",
     "autoprefixer": "^10.4.22",
     "tailwindcss": "^3.4.1"
+  },
+  "description": "A community health resource hub for Monroe, Louisiana residents, built with React, JavaScript, HTML, and CSS.",
+  "main": "tailwind.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unikabista/health-club.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unikabista/health-club/issues"
   }
 }
