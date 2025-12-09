@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/health-club/static/css/main.4fc51703.css",
+    "main.js": "/health-club/static/js/main.ac174631.js",
+    "index.html": "/health-club/index.html",
+    "main.4fc51703.css.map": "/health-club/static/css/main.4fc51703.css.map",
+    "main.ac174631.js.map": "/health-club/static/js/main.ac174631.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4fc51703.css",
+    "static/js/main.ac174631.js"
+  ]
+}
